@@ -1,8 +1,5 @@
 import requests
-# import urllib.request
-# import pandas as pd
 from bs4 import BeautifulSoup as BS
-from typing import Union
 
 
 class Crawl:
@@ -42,7 +39,7 @@ class Crawl:
             self._data_dict[url] = content
         return content
 
-    def get_next_hot_page(self, refresh=False) -> Union[str, None]:
+    def get_next_hot_page(self, refresh=False) -> str:
         """get next page of hot boards on ptt
 
         Args:
@@ -80,7 +77,7 @@ class Crawl:
         self._href_list = href_list
         return full_list
 
-    def get_prev_hot_page(self, refresh=False) -> Union[str, None]:
+    def get_prev_hot_page(self, refresh=False) -> str:
         self._hot_page = self._hot_page - 2
         if self._hot_page < 0: raise Exception("There is no previous page!")
         return self.get_next_hot_page(refresh=refresh)

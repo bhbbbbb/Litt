@@ -9,7 +9,6 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 sys.path.append("./src")
 from fsm import TocMachine
-from utils import send_text_message
 
 load_dotenv()
 

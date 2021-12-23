@@ -94,8 +94,8 @@ class TocMachine(GraphMachine):
     def on_enter_home(self, event):
         MSG = """Welcome to Litt
 enter 'hot' to get the hot boards list
-enter go <board name> to get in the specific board
-        """
+enter 'go <board name>' to get in the specific board
+enter 'home' anytime to get back to here"""
         self.reply_message(event, MSG)
         return
     
