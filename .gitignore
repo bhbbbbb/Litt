@@ -108,3 +108,7 @@ venv.bak/
 
 # vscode
 .vscode/
+src/gossiping_article.html
+src/gossiping.html
+src/pttind.html
+src/test.py
