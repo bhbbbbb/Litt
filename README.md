@@ -1,15 +1,62 @@
-# TOC Project 2020
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/dc7fa47fcd809b99d087/maintainability)](https://codeclimate.com/github/NCKU-CCS/TOC-Project-2020/maintainability)
-
-[![Known Vulnerabilities](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020/badge.svg)](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020)
-
-
-Template Code for TOC Project 2020
+# TOC Project 2021
 
 A Line bot based on a finite state machine
 
 More details in the [Slides](https://hackmd.io/@TTW/ToC-2019-Project#) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
+
+## About
+
+Litt is a homework project of TOC 2021, and is inspired by searching for idea on Ptt.
+
+Sometimes, when we are in class ,at work, or any situation that not so suitable for browsing Ptt.
+
+Litt allows us browsing Ptt by acting like chatting with someone on Line.
+
+---
+
+### How to use
+
+- type `hot` to go to hot board list
+<br>
+![hot](./img/hot.jpg)
+
+- type `next` to get next page of the list
+<br>
+![next](./img/next.jpg)
+
+- type `prev` to get back of course
+<br>
+![prev](./img/prev.jpg)
+
+- type `<index of board>` to get in specific board
+<br>
+![2](./img/2.jpg)
+
+- type `<index of article>` to browse the article
+<br>
+![article](./img/article.jpg)
+
+
+### FSM Diagram
+
+![fsm diagram](./fsm.png)
+
+### Extra Functionality
+
+#### Quick Reply
+
+User can send command easily on mobile device.
+
+<!-- ![quick_reply](./img/quick_reply.jpg) -->
+<img alt="quick_reply" src="./img/quick_reply.jpg" width="400"></img>
+
+#### Web Crawling
+
+Litt serves content by crawling PTTWeb simultaneously.
+
+---
+
+
 
 ## Setup
 
