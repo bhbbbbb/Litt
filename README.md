@@ -17,24 +17,19 @@ Litt allows us browsing Ptt by acting like chatting with someone on Line.
 ### How to use
 
 - type `hot` to go to hot board list
-<br>
-![hot](./img/hot.jpg)
+<br> ![hot](./img/hot.jpg)
 
 - type `next` to get next page of the list
-<br>
-![next](./img/next.jpg)
+<br> ![next](./img/next.jpg)
 
 - type `prev` to get back of course
-<br>
-![prev](./img/prev.jpg)
+<br> ![prev](./img/prev.jpg)
 
 - type `<index of board>` to get in specific board
-<br>
-![2](./img/2.jpg)
+<br> ![2](./img/2.jpg)
 
 - type `<index of article>` to browse the article
-<br>
-![article](./img/article.jpg)
+<br> ![article](./img/article.jpg)
 
 
 ### FSM Diagram
