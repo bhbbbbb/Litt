@@ -2,8 +2,7 @@ from transitions.extensions import GraphMachine
 from transitions.core import MachineError
 from crawl import Crawl
 from utils import send_text_message
-
-
+from utils import QUICK_REPLY_OPTIONS as OPTIONS
 
 class TocMachine(GraphMachine):
     def __init__(self):
@@ -86,9 +85,9 @@ class TocMachine(GraphMachine):
             auto_transitions=False,
         )
 
-    def reply_message(self, event, msg):
+    def reply_message(self, event, msg, quick_reply=None):
         reply_token = event.reply_token
-        send_text_message(reply_token, msg)
+        send_text_message(reply_token, msg, quick_reply)
         return
 
     def on_enter_home(self, event):
@@ -96,47 +95,47 @@ class TocMachine(GraphMachine):
 enter 'hot' to get the hot boards list
 enter 'go <board name>' to get in the specific board
 enter 'home' anytime to get back to here"""
-        self.reply_message(event, MSG)
+        self.reply_message(event, MSG, quick_reply=[OPTIONS.HOT])
         return
     
     def go_hot_boards(self, event):
         res = self.user.get_next_hot_page(refresh=True)
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.NEXT, OPTIONS.BACK, OPTIONS.HOME])
         return
     
     def go_next_hot_page(self, event):
         res = self.user.get_next_hot_page()
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.NEXT, OPTIONS.PREV, OPTIONS.BACK, OPTIONS.HOME])
         return
     
     def go_prev_hot_page(self, event):
         res = self.user.get_prev_hot_page()
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.NEXT, OPTIONS.PREV, OPTIONS.BACK, OPTIONS.HOME])
         return
     
     def go_board_by_index_from_hot(self, event):
         res = self.user.go_board_from_hot(int(event.message.text))
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.NEXT, OPTIONS.BACK, OPTIONS.HOME])
         return
     
     def go_next_page_articles_list(self, event):
         res = self.user.go_next_page_articles_list()
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.NEXT, OPTIONS.PREV, OPTIONS.BACK, OPTIONS.HOME])
         return
     
     def go_prev_page_articles_list(self, event):
         res = self.user.go_prev_page_articles_list()
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.NEXT, OPTIONS.PREV, OPTIONS.BACK, OPTIONS.HOME])
         return
     
     def go_article(self, event):
         res = self.user.go_article(int(event.message.text))
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.BACK, OPTIONS.HOME])
         return
 
     def leave_article(self, event):
         res = self.user.leave_article()
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.NEXT, OPTIONS.PREV, OPTIONS.BACK, OPTIONS.HOME])
         return
 
     def go_board_by_board_name(self, event):
@@ -145,7 +144,7 @@ enter 'home' anytime to get back to here"""
             res = self.user.go_board_by_board_name(tem[1])
         else:
             raise Exception(f"There is no command {tem[0]}")
-        self.reply_message(event, res)
+        self.reply_message(event, res, quick_reply=[OPTIONS.NEXT, OPTIONS.BACK, OPTIONS.HOME])
         return
     
 
